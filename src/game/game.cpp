@@ -25,5 +25,13 @@ void tribeleader::Game::startGame() {
 
 	window.setPosition(sf::Vector2i(0, 0));
 
+	for (int x = 0; x < 20; x++) {
+		tribeleader::Tile tile;
+
+		tile.position.x = x;
+
+		tiles.push_back(tile);
+	}
+
 	loop();
 }
