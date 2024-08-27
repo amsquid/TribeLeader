@@ -12,8 +12,12 @@ namespace tribeleader {
 		sf::RenderWindow window;
 
 		std::vector<tribeleader::Tile> tiles;
+		std::vector<tribeleader::Entity> entities;
+
+		bool keysDown[sf::Keyboard::KeyCount] = { false };
 
 		tribeleader::Camera camera;
+		tribeleader::Player player;
 
 	private:
 		void loop();

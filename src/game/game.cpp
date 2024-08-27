@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowStyle.hpp>
+#include <iostream>
 
 void tribeleader::Game::loop() {
 	while (window.isOpen()) {
@@ -15,6 +16,7 @@ void tribeleader::Game::stopGame() {
 }
 
 void tribeleader::Game::startGame() {
+	// Window setup
 	window.create(
 		sf::VideoMode(1280, 768),
 		"Tribe Leader",
@@ -25,12 +27,23 @@ void tribeleader::Game::startGame() {
 
 	window.setPosition(sf::Vector2i(0, 0));
 
-	for (int x = 0; x < 20; x++) {
-		tribeleader::Tile tile;
+	// Entities
 
-		tile.position.x = x;
+	// Blocks
+	for (int x = -100; x < 100; x++) {
+		int y = (int)std::floorf(std::sin(x * (3.1415f / 100.0f)) * 10.0f);
 
-		tiles.push_back(tile);
+		while (y < 100) {
+			tribeleader::Tile tile;
+
+			tile.position.x = x;
+			tile.position.y = y;
+
+			tiles.push_back(tile);
+
+			y++;
+		}
+
 	}
 
 	loop();
